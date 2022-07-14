@@ -1,0 +1,10 @@
+{
+    "login": {
+        "email": "123@gmail.com",
+        "malformedEmail1": "123@",
+        "malformedEmail2": "123@gmail",
+        "emailString": "123qwesadzxc",
+        "password": "password123!",
+        "wrongPassword": "wrong12345678"
+    }
+}
