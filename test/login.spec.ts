@@ -321,7 +321,7 @@ describe("Demo Grip - Login feature", () => {
         await allure.createStep("And the user clicks 'forgot password' link", async () => {
             await demoPage.clickForgotPassword();
         })();
-        await allure.createStep("And The user raturns back to login", async () => {
+        await allure.createStep("And The user returns back to login", async () => {
             await demoPage.clickBackToLogin();
         })();
         await allure.createStep("Then The form persist user email", async () => {
@@ -385,7 +385,7 @@ describe("Demo Grip - Login feature", () => {
             password: testData.login.password
         };
 
-        await allure.createStep("When The user logs in with invalid credentials", async () => {
+        await allure.createStep("When The user logs in with valid credentials", async () => {
             reposne = await fetch(baseUrl + '/api/v3/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
