@@ -3,9 +3,12 @@ import { DemoPage } from "../pages/DemoPage";
 import { HomePage } from "../pages/HomePage";
 import { SignUpPage } from "../pages/SignUpPage";
 import * as testData from "../test-data/testData.json";
+const fetch = require('node-fetch');
 const demoPage = new DemoPage();
 const signUpPage = new SignUpPage();
 const homePage = new HomePage();
+
+const baseUrl = "https://demo-v2.grip.tools";
 
 declare const allure: any;
 
@@ -18,7 +21,7 @@ describe("Demo Grip - Login feature", () => {
     })
     beforeEach(async () => {
         await allure.createStep("Given The User navigates to the login page", async () => {
-            await browser.get("https://demo-v2.grip.tools/login")
+            await browser.get(baseUrl + "/login")
         })();
     })
     afterEach(async () => {
@@ -51,7 +54,7 @@ describe("Demo Grip - Login feature", () => {
         await allure.createStep("Then Email input field is focused", async () => {
             await demoPage.waitTillisEnabled(demoPage.emailInput);
             expect(demoPage.emailInput.getWebElement().getAttribute("name"))
-            .toEqual(browser.driver.switchTo().activeElement().getAttribute("name"));
+                .toEqual(browser.driver.switchTo().activeElement().getAttribute("name"));
         })();
     })
 
@@ -355,13 +358,51 @@ describe("Demo Grip - Login feature", () => {
     })
 
 
+    it("TC15 API - To check that user is not able to login with wrong password", async () => {
+        let reposne: Response;
+        let payload = {
+            email: testData.login.email,
+            password: testData.login.wrongPassword
+        };
+
+        await allure.createStep("When The user logs in with invalid credentials", async () => {
+            reposne = await fetch(baseUrl + '/api/v3/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+        })();
+        await allure.createStep("Then The the user should not be authorized", async () => {
+            expect(reposne.status).toEqual(401);
+        })();
+    });
+
+
+    it("TC16 API - To check that user should be able to login with valid credentials", async () => {
+        let reposne: Response;
+        let payload = {
+            email: testData.login.email,
+            password: testData.login.password
+        };
+
+        await allure.createStep("When The user logs in with invalid credentials", async () => {
+            reposne = await fetch(baseUrl + '/api/v3/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+        })();
+        await allure.createStep("Then The the user should be authorized", async () => {
+            expect(reposne.status).toEqual(200);
+        })();
+    });
+
 })
 
 
 // it("TC01 ", async () => {
 //     await allure.createStep("Sign up", async () => {
-//         await demoPage.clickSignUp();
-//         await attachScreenshot('last');
+//         await attachScreenshot('1');
 //     })();
 // })
 
