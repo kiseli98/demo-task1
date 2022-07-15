@@ -82,7 +82,7 @@ describe("Demo Grip - Login feature", () => {
             var message = "Please include an '@' in the email address. '" + testData.login.emailString + "' is missing an '@'.";
             expect(await demoPage.getEmailTooltipValdiationMessage()).toEqual(message);
         })();
-        await allure.createStep("And The the next button shoud be disabled", async () => {
+        await allure.createStep("And The next button should be disabled", async () => {
             expect(await demoPage.isNextButtonEnabled()).toBe(false);
         })();
 
@@ -98,7 +98,7 @@ describe("Demo Grip - Login feature", () => {
             var message = "Please enter a part following '@'. '" + testData.login.malformedEmail1 + "' is incomplete.";
             expect(await demoPage.getEmailTooltipValdiationMessage()).toEqual(message);
         })();
-        await allure.createStep("And The the next button shoud be disabled", async () => {
+        await allure.createStep("And The next button should be disabled", async () => {
             expect(await demoPage.isNextButtonEnabled()).toBe(false);
         })();
         await allure.createStep("When The user fills email with a malformed email", async () => {
@@ -109,14 +109,14 @@ describe("Demo Grip - Login feature", () => {
             var message = "Invalid email address";
             expect(await demoPage.getErrorMessageText()).toEqual(message);
         })();
-        await allure.createStep("And The the next button shoud be disabled", async () => {
+        await allure.createStep("And The next button should be disabled", async () => {
             expect(await demoPage.isNextButtonEnabled()).toBe(false);
         })();
         await allure.createStep("When The user fills email with a valid email", async () => {
             await demoPage.fillEmail(testData.login.email);
             await demoPage.unfocusInputField();
         })();
-        await allure.createStep("Then The the next button shoud be enabled", async () => {
+        await allure.createStep("Then The next button should be enabled", async () => {
             expect(await demoPage.isNextButtonEnabled()).toBe(true);
         })();
     })
@@ -127,26 +127,26 @@ describe("Demo Grip - Login feature", () => {
             await demoPage.fillEmail(testData.login.email);
             await demoPage.unfocusInputField();
         })();
-        await allure.createStep("Then The the next button shoud be enabled", async () => {
+        await allure.createStep("Then The next button should be enabled", async () => {
             expect(await demoPage.isNextButtonEnabled()).toBe(true);
         })();
         await allure.createStep("When The user clicks next btn", async () => {
             await demoPage.clickNext();
         })();
-        await allure.createStep("Then The the log in button shoud be disabled", async () => {
+        await allure.createStep("Then The log in button should be disabled", async () => {
             expect(await demoPage.isLoginButtonEnabled()).toBe(false);
         })();
         await allure.createStep("When The user fills password with a valid password", async () => {
             await demoPage.fillPassword(testData.login.password);
             await demoPage.unfocusInputField();
         })();
-        await allure.createStep("Then The the log in button shoud be enabled", async () => {
+        await allure.createStep("Then The log in button should be enabled", async () => {
             expect(await demoPage.isLoginButtonEnabled()).toBe(true);
         })();
         await allure.createStep("When The user clears password input", async () => {
             await demoPage.clearPassword();
         })();
-        await allure.createStep("Then The the log in button shoud be disabled", async () => {
+        await allure.createStep("Then The log in button should be disabled", async () => {
             expect(await demoPage.isLoginButtonEnabled()).toBe(false);
         })();
         await allure.createStep("And The user should see valid error message", async () => {
@@ -161,13 +161,13 @@ describe("Demo Grip - Login feature", () => {
             await demoPage.fillEmail(testData.login.email);
             await demoPage.unfocusInputField();
         })();
-        await allure.createStep("Then The the next button shoud be enabled", async () => {
+        await allure.createStep("Then The next button should be enabled", async () => {
             expect(await demoPage.isNextButtonEnabled()).toBe(true);
         })();
         await allure.createStep("When The user clicks next btn", async () => {
             await demoPage.clickNext();
         })();
-        await allure.createStep("Then email input shoud be disabled", async () => {
+        await allure.createStep("Then email input should be disabled", async () => {
             expect(await demoPage.isEmailInputEnabled()).toBe(false);
         })();
     })
@@ -177,7 +177,7 @@ describe("Demo Grip - Login feature", () => {
             await demoPage.fillEmail(testData.login.email);
             await demoPage.unfocusInputField();
         })();
-        await allure.createStep("Then The the next button shoud be enabled", async () => {
+        await allure.createStep("Then The next button should be enabled", async () => {
             expect(await demoPage.isNextButtonEnabled()).toBe(true);
         })();
         await allure.createStep("When The user clicks next btn", async () => {
@@ -197,7 +197,7 @@ describe("Demo Grip - Login feature", () => {
             await demoPage.fillEmail(testData.login.email);
             await demoPage.unfocusInputField();
         })();
-        await allure.createStep("Then The the next button shoud be enabled", async () => {
+        await allure.createStep("Then The next button should be enabled", async () => {
             expect(await demoPage.isNextButtonEnabled()).toBe(true);
         })();
         await allure.createStep("When The user clicks next btn", async () => {
@@ -208,7 +208,7 @@ describe("Demo Grip - Login feature", () => {
             await demoPage.fillPassword(testData.login.wrongPassword);
             await demoPage.unfocusInputField();
         })();
-        await allure.createStep("Then The the log in button shoud be enabled", async () => {
+        await allure.createStep("Then The log in button should be enabled", async () => {
             expect(await demoPage.isLoginButtonEnabled()).toBe(true);
         })();
         await allure.createStep("And the user clicks on log in btn", async () => {
@@ -218,7 +218,7 @@ describe("Demo Grip - Login feature", () => {
             var message = "Invalid email or password";
             expect(await demoPage.getErrorMessageText()).toEqual(message);
         })();
-        await allure.createStep("Then The the log in button shoud be disabled", async () => {
+        await allure.createStep("Then The log in button should be disabled", async () => {
             expect(await demoPage.isLoginButtonEnabled()).toBe(false);
         })();
 
@@ -229,7 +229,7 @@ describe("Demo Grip - Login feature", () => {
         await allure.createStep("When The user logs in with valid credentials", async () => {
             await demoPage.logIn(testData.login.email, testData.login.password);
         })();
-        await allure.createStep("Then The the Home Page should be visible", async () => {
+        await allure.createStep("Then The Home Page should be visible", async () => {
             expect(await homePage.waitTillPageIsReady()).toBe(true);
         })();
 
@@ -241,7 +241,7 @@ describe("Demo Grip - Login feature", () => {
             await demoPage.fillEmail(testData.login.email);
             await demoPage.unfocusInputField();
         })();
-        await allure.createStep("Then The the next button shoud be enabled", async () => {
+        await allure.createStep("Then The next button should be enabled", async () => {
             expect(await demoPage.isNextButtonEnabled()).toBe(true);
         })();
         await allure.createStep("When The user clicks next btn", async () => {
@@ -258,7 +258,7 @@ describe("Demo Grip - Login feature", () => {
             await demoPage.fillEmail(testData.login.email);
             await demoPage.unfocusInputField();
         })();
-        await allure.createStep("Then The the next button shoud be enabled", async () => {
+        await allure.createStep("Then The next button should be enabled", async () => {
             expect(await demoPage.isNextButtonEnabled()).toBe(true);
         })();
         await allure.createStep("When The user clicks next btn", async () => {
@@ -275,7 +275,7 @@ describe("Demo Grip - Login feature", () => {
             await demoPage.clearEmail();
             await demoPage.unfocusInputField();
         })();
-        await allure.createStep("Then The send link btn shoud be disabled", async () => {
+        await allure.createStep("Then The send link btn should be disabled", async () => {
             expect(await demoPage.sendLinkBtn.isEnabled()).toBe(false);
         })();
         await allure.createStep("And The user should see valid error message", async () => {
@@ -290,7 +290,7 @@ describe("Demo Grip - Login feature", () => {
             await demoPage.fillEmail(testData.login.email);
             await demoPage.unfocusInputField();
         })();
-        await allure.createStep("Then The the next button shoud be enabled", async () => {
+        await allure.createStep("Then The next button should be enabled", async () => {
             expect(await demoPage.isNextButtonEnabled()).toBe(true);
         })();
         await allure.createStep("When The user clicks next btn", async () => {
@@ -311,7 +311,7 @@ describe("Demo Grip - Login feature", () => {
             await demoPage.fillEmail(testData.login.email);
             await demoPage.unfocusInputField();
         })();
-        await allure.createStep("Then The the next button shoud be enabled", async () => {
+        await allure.createStep("Then The next button should be enabled", async () => {
             expect(await demoPage.isNextButtonEnabled()).toBe(true);
         })();
         await allure.createStep("When The user clicks next btn", async () => {
@@ -334,7 +334,7 @@ describe("Demo Grip - Login feature", () => {
             await demoPage.fillEmail(testData.login.email);
             await demoPage.unfocusInputField();
         })();
-        await allure.createStep("Then The the next button shoud be enabled", async () => {
+        await allure.createStep("Then The next button should be enabled", async () => {
             expect(await demoPage.isNextButtonEnabled()).toBe(true);
         })();
         await allure.createStep("When The user clicks next btn", async () => {
@@ -372,7 +372,7 @@ describe("Demo Grip - Login feature", () => {
                 body: JSON.stringify(payload)
             });
         })();
-        await allure.createStep("Then The the user should not be authorized", async () => {
+        await allure.createStep("Then The user should not be authorized", async () => {
             expect(reposne.status).toEqual(401);
         })();
     });
@@ -392,7 +392,7 @@ describe("Demo Grip - Login feature", () => {
                 body: JSON.stringify(payload)
             });
         })();
-        await allure.createStep("Then The the user should be authorized", async () => {
+        await allure.createStep("Then The user should be authorized", async () => {
             expect(reposne.status).toEqual(200);
         })();
     });
